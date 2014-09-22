@@ -1,0 +1,49 @@
+into method label _WAK code_regex WAK\s\(Arg0\) replace_matched begin
+        WIFI ()\n
+        If (LOr (LLess (Arg0, One), LGreater (Arg0, 0x05)))\n
+        {\n
+            Store (0x03, Arg0)\n
+        }\n
+\n
+        If (LOr (LLess (Arg0, One), LGreater (Arg0, 0x05)))\n
+        {\n
+            Store (0x03, Arg0)\n
+        }\n
+        %0
+end;
+
+into device label EC0 parent_label _SB.PCI0.LPCB code_regex Name\s+\(WBTG,[\s\S]*\) remove_matched;
+
+into device label EC0 parent_label _SB.PCI0.LPCB insert begin
+            Name (WBTG, One)
+end;
+
+
+# Add the WIFI method
+into method label WIFI remove_entry;
+into definitionblock code_regex . insert begin
+    Method (WIFI, 0, NotSerialized)\n
+    {\n
+        If (\_SB.PCI0.LPCB.EC0.WBTG)\n
+        {\n
+            OWLD (One)\n
+            Sleep (0x01F4)\n
+            OBTD (One)\n
+        }\n
+        Else\n
+        {\n
+            OWLD (Zero)\n
+            Sleep (0x01F4)\n
+            OBTD (Zero)\n
+        }\n
+\n
+        Return (Zero)\n
+    }\n
+end;
+
+
+#inject inside _INI a call to WIFI (got no idea why?)
+into method label _INI parent_label _SB.PCI0 code_regex Store\s\(0x07DC,\sOSYS\) replace_matched begin
+            %0\n
+            WIFI ()
+end;

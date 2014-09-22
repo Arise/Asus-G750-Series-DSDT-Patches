@@ -1,0 +1,34 @@
+#Maintained by: PHPdev32 for: Sourceforge
+
+#rename a couple of variables, I assume to prevent some compiler warnings
+into device label _T_0 set_label begin T_0 end;
+into device label _T_1 set_label begin T_1 end;
+into_all all code_regex _T_0 replaceall_matched begin T_0 end;
+into_all all code_regex _T_1 replaceall_matched begin T_1 end;
+
+
+# Device Renames
+#into_all all code_regex _T_([0-6]) replaceall_matched begin T_%1 end;
+
+Name (PCHS, 0x00000001)
+    Name (TOPM, 0x00000000)
+
+
+#Maintained by: PHPdev32 for: Sourceforge
+into Name label TOPM remove_entry;
+into Name label TOPM insert begin
+    Name (TOPM, Zero)
+end
+
+into device label TOPM code_regex . insert begin
+    Name (TOPM, Zero)
+end
+
+into definitionblock code_regex Name (TOPM, 0x00000000) replaceall_matched begin Name (TOPM, Zero) end;
+
+
+#Maintained by: PHPdev32 for: Sourceforge
+#corect
+into definitionblock code_regex Name\s+\(TOPM,\s+0x00000000\) replaceall_matched begin Name (TOPM, Zero) end;
+into definitionblock code_regex Name\s+\(PCHS,\s+0x00000001\) replaceall_matched begin Name (PCHS, One) end;
+into_all all code_regex Name\s+\(PCHS,\s+0x00000001\) replaceall_matched begin Name (PCHS, One) end;

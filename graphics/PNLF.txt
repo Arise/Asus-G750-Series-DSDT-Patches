@@ -1,0 +1,17 @@
+# This patch enables the brightness slider in SysPrefs->Displays
+# and will also enable activation of sleep mode by closing
+# the laptop lid.
+
+# This patch is a "basic" PNLF patch 
+
+into device label PNLF remove_entry;
+into scope label _SB insert
+begin
+    Device (PNLF)\n
+    {\n
+        Name (_HID, EisaId ("APP0002"))\n
+        Name (_CID, "backlight")\n
+        Name (_UID, 0x0A)\n
+        Name (_STA, 0x0B)\n
+    }\n
+end;

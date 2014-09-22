@@ -1,0 +1,53 @@
+# Rename/ADD ARPT (Airport) device
+into device label PXSX parent_label RP03 remove_entry;
+into device label ARPT parent_label RP03 remove_entry;
+into device label RP03 insert begin
+                Device (ARPT)\n
+                {\n
+                    Name (_ADR, Zero)\n
+                    Name (_SUN, One)\n
+                    Name (_PRW, Package (0x02)\n
+                    {\n
+                        0x09, \n
+                        0x04\n
+                    })\n
+                    Method (_DSM, 4, NotSerialized)\n
+                    {\n
+                        If (LEqual (Arg2, Zero))\n
+                        {\n
+                            Return (Buffer (One)\n
+                            {\n
+                                0x03\n
+                            })\n
+                        }\n
+\n
+                        Return (Package (0x0C)\n
+                        {\n
+                            "AAPL,slot-name", \n
+                            "AirPort", \n
+                            "built-in", \n
+                            Buffer (One)\n
+                            {\n
+                                0x00\n
+                            }, \n
+\n
+                            "device_type", \n
+                            "AirPort", \n
+                            "model", \n
+                            "Broadcom BCM4352 802.11 a/b/g/n Wireless Network Controller", \n
+                            "name", \n
+                            "AirPort Extreme", \n
+                            "compatible", \n
+                            "pci14e4,43a0"\n
+                        })\n
+                    }\n
+                }\n
+end;
+
+# rename PXSX into ARPT
+into method label HPME parent_label RP03 code_regex Notify\s\(PXSX,\s0x02\) replace_matched begin
+                        Notify (ARPT, 0x02)
+end;
+
+into definitionblock code_regex . insert
+begin Store ("arpt3-bcm4352_v2.0 dsdt edits, github.com/toleda", Debug) end;

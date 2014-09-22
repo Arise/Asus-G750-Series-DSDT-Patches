@@ -1,0 +1,195 @@
+into device label GFX0 remove_entry; 
+into device name_adr 0x00010000 insert
+begin
+                Device (GFX0)\n 
+                {\n 
+                    Name (_ADR, Zero)\n 
+                    Method (_DSM, 4, NotSerialized) \n
+                    { \n
+                        Store (Package (0x40) \n
+                            { \n
+                                "AAPL,slot-name", \n
+                                "PCI x16", \n
+                                "@0,compatible", \n
+                                Buffer (0x0B) \n
+                                { \n
+                                    "NVDA,NVMac" \n
+                                }, \n
+                                "@0,connector-type", \n
+                                Buffer (0x04) \n
+                                { \n
+                                    0x02, 0x04, 0x00, 0x00 \n
+                                }, \n
+                                "@0,device_type", \n
+                                Buffer (0x08) \n
+                                { \n
+                                    "display" \n
+                                }, \n
+                                "@0,backlight-control", \n
+                                Buffer (0x04) \n
+                                { \n
+                                    0x01, 0x00, 0x00, 0x00 \n
+                                }, \n
+                                "@0,built-in", \n
+                                Buffer (0x04) \n
+                                { \n
+                                    0x01, 0x00, 0x00, 0x00 \n
+                                }, \n
+                                "@0,pwm-info", \n
+                                Buffer (0x18) \n
+                                { \n
+                                    /* 0000 */    0x02, 0x18, 0x00, 0x64, 0x90, 0x59, 0x02, 0x00, \n
+                                    /* 0008 */    0x08, 0x52, 0x00, 0x00, 0xA5, 0x1C, 0x00, 0x00, \n
+                                    /* 0010 */    0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00 \n
+                                }, \n
+                                "@0,display-cfg", \n
+                                Buffer (0x04) \n
+                                { \n
+                                    0x03, 0x04, 0x08, 0x00 \n
+                                }, \n
+                                "@0,name", \n
+                                Buffer (0x0F) \n
+                                { \n
+                                    "NVDA,Display-A" \n
+                                }, \n
+                                "@1,compatible", \n
+                                Buffer (0x0B) \n
+                                { \n
+                                    "NVDA,NVMac" \n
+                                }, \n
+                                "@1,connector-type", \n
+                                Buffer (0x04) \n
+                                { \n
+                                    0x00, 0x04, 0x00, 0x00 \n
+                                }, \n
+                                "@1,device_type", \n
+                                Buffer (0x08) \n
+                                { \n
+                                    "display" \n
+                                }, \n
+                                "@1,display-cfg", \n
+                                Buffer (0x04) \n
+                                { \n
+                                    0x03, 0x04, 0x08, 0x00 \n
+                                }, \n
+                                "@1,name", \n
+                                Buffer (0x0F) \n
+                                { \n
+                                    "NVDA,Display-B" \n
+                                }, \n
+                                "@2,compatible", \n
+                                Buffer (0x0B) \n
+                                { \n
+                                    "NVDA,NVMac" \n
+                                }, \n
+                                "@2,connector-type", \n
+                                Buffer (0x04) \n
+                                { \n
+                                    0x00, 0x04, 0x00, 0x00 \n
+                                }, \n
+                                "@2,device_type", \n
+                                Buffer (0x08) \n
+                                { \n
+                                    "display" \n
+                                }, \n
+                                "@2,display-cfg", \n
+                                Buffer (0x04) \n
+                                { \n
+                                    0x03, 0x04, 0x08, 0x00 \n
+                                }, \n
+                                "@2,name", \n
+                                Buffer (0x0F) \n
+                                { \n
+                                    "NVDA,Display-C" \n
+                                }, \n
+                                "@3,compatible", \n
+                                Buffer (0x0B) \n
+                                { \n
+                                    "NVDA,NVMac" \n
+                                }, \n
+                                "@3,connector-type", \n
+                                Buffer (0x04) \n
+                                { \n
+                                    0x00, 0x04, 0x00, 0x00 \n
+                                }, \n
+                                "@3,device_type", \n
+                                Buffer (0x08) \n
+                                { \n
+                                    "display" \n
+                                }, \n
+                                "@3,display-cfg", \n
+                                Buffer (0x04) \n
+                                { \n
+                                    0x03, 0x04, 0x08, 0x00 \n
+                                }, \n
+                                "@3,name", \n
+                                Buffer (0x0F) \n
+                                { \n
+                                    "NVDA,Display-D" \n
+                                }, \n
+                                "built-in", \n
+                                Buffer (0x02) \n
+                                { \n
+                                    0x00, 0x00 \n
+                                }, \n
+                                "graphics-options", \n
+                                Buffer (0x04) \n
+                                { \n
+                                    0x04, 0x00, 0x00, 0x00 \n
+                                }, \n
+                                "NVCAP", \n
+                                Buffer (0x18) \n
+                                { \n
+                                    /* 0000 */    0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, \n
+                                    /* 0008 */    0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, \n
+                                    /* 0010 */    0x00, 0x00, 0x00, 0x00 \n
+                                }, \n
+                                "VRAM,totalsize", \n
+                                Buffer (0x04) \n
+                                { \n
+                                    0x00, 0x00, 0x00, 0x80 \n
+                                }, \n
+                                "device_type", \n
+                                Buffer (0x0C) \n
+                                { \n
+                                    "NVDA,Parent" \n
+                                }, \n
+                                "model", \n
+                                Buffer (0x11) \n
+                                { \n
+                                    "GeForce GTX 765M" \n
+                                }, \n
+                                "rom-revision", \n
+                                Buffer (0x1E) \n
+                                { \n
+                                    "nVidia GTX 765M OpenGL Engine" \n
+                                }, \n
+                                "hda-gfx", \n
+                                Buffer (0x0A) \n
+                                { \n
+                                    "onboard-1" \n
+                                } \n
+                            }, Local0) \n
+                        DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0)) \n
+                        Return (Local0) \n
+                    } \n
+                } \n
+                \n
+                Device (HDAU) \n
+                { \n
+                    Name (_ADR, One) \n
+                    Method (_DSM, 4, NotSerialized) \n
+                    { \n
+                        Store (Package (0x02) \n
+                            { \n
+                                "hda-gfx", \n
+                                Buffer (0x0A) \n
+                                { \n
+                                    "onboard-1" \n
+                                } \n
+                            }, Local0) \n
+                        DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0)) \n
+                        Return (Local0) \n
+                    } \n
+                } \n
+end

@@ -1,0 +1,145 @@
+#Fix EHC1
+into method label _DSM parent_label EHC1 remove_entry;
+into device label EHC1 insert begin
+            Method (_DSM, 4, NotSerialized)\n
+            {\n
+                If (LEqual (Arg2, Zero))\n
+                {\n
+                    Return (Buffer (One)\n
+                    {\n
+                        0x03\n
+                    })\n
+                }\n
+                Return (Package (0x12)\n
+                {\n
+                    "AAPL,clock-id", \n
+                    Buffer (One)\n
+                    {\n
+                        0x01\n
+                    }, \n
+                    "built-in", \n
+                    Buffer (One)\n
+                    {\n
+                        0x00\n
+                    }, \n
+                    "subsystem-id", \n
+                    Buffer (0x04)\n
+                    {\n
+                        0x70, 0x72, 0x00, 0x00\n
+                    }, \n
+                    "subsystem-vendor-id", \n
+                    Buffer (0x04)\n
+                    {\n
+                        0x86, 0x80, 0x00, 0x00\n
+                    }, \n
+                    "AAPL,current-available", \n
+                    0x0834, \n
+                    "AAPL,current-extra", \n
+                    0x0898, \n
+                    "AAPL,current-extra-in-sleep", \n
+                    0x0640, \n
+                    "AAPL,device-internal", \n
+                    0x02, \n
+                    "AAPL,max-port-current-in-sleep", \n
+                    0x0834\n
+                })\n
+            }\n
+\n
+end;
+#Fix EHC2
+into method label _DSM parent_label EHC2 remove_entry;
+into device label EHC2 insert begin
+            Method (_DSM, 4, NotSerialized)\n
+            {\n
+                If (LEqual (Arg2, Zero))\n
+                {\n
+                    Return (Buffer (One)\n
+                    {\n
+                        0x03\n
+                    })\n
+                }\n
+                Return (Package (0x12)\n
+                {\n
+                    "AAPL,clock-id", \n
+                    Buffer (One)\n
+                    {\n
+                        0x01\n
+                    }, \n
+                    "built-in", \n
+                    Buffer (One)\n
+                    {\n
+                        0x00\n
+                    }, \n
+                    "subsystem-id", \n
+                    Buffer (0x04)\n
+                    {\n
+                        0x70, 0x72, 0x00, 0x00\n
+                    }, \n
+                    "subsystem-vendor-id", \n
+                    Buffer (0x04)\n
+                    {\n
+                        0x86, 0x80, 0x00, 0x00\n
+                    }, \n
+                    "AAPL,current-available", \n
+                    0x0834, \n
+                    "AAPL,current-extra", \n
+                    0x0898, \n
+                    "AAPL,current-extra-in-sleep", \n
+                    0x0640, \n
+                    "AAPL,device-internal", \n
+                    0x02, \n
+                    "AAPL,max-port-current-in-sleep", \n
+                    0x0834\n
+                })\n
+            }\n
+\n
+end;
+
+#Fix XHC
+into method label _DSM parent_label XHC remove_entry;
+into device label XHC insert begin
+            Method (_DSM, 4, NotSerialized)\n
+            {\n
+                If (LEqual (Arg2, Zero))\n
+                {\n
+                    Return (Buffer (One)\n
+                    {\n
+                        0x03\n
+                    })\n
+                }\n
+                Return (Package (0x12)\n
+                {\n
+                    "AAPL,clock-id", \n
+                    Buffer (One)\n
+                    {\n
+                        0x02\n
+                    }, \n
+                    "built-in", \n
+                    Buffer (One)\n
+                    {\n
+                        0x00\n
+                    }, \n
+                    "subsystem-id", \n
+                    Buffer (0x04)\n
+                    {\n
+                        0x70, 0x72, 0x00, 0x00\n
+                    }, \n
+                    "subsystem-vendor-id", \n
+                    Buffer (0x04)\n
+                    {\n
+                        0x86, 0x80, 0x00, 0x00\n
+                    }, \n
+                    "AAPL,current-available", \n
+                    0x0834, \n
+                    "AAPL,current-extra", \n
+                    0x0898, \n
+                    "AAPL,current-extra-in-sleep", \n
+                    0x0640, \n
+                    "AAPL,device-internal", \n
+                    0x02, \n
+                    "AAPL,max-port-current-in-sleep", \n
+                    0x0834\n
+                })\n
+            }\n
+\n
+end;

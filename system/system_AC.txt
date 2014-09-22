@@ -1,0 +1,11 @@
+#https://github.com/RehabMan/Laptop-DSDT-Patch/tree/master/system
+# Power fix - cause AppleACPIACAdapter to be loaded
+into device name_hid ACPI0003 code_regex Name\s+\(_PRW,[\s\S]*\}\) remove_matched;
+into device name_hid ACPI0003 insert
+begin
+            Name (_PRW, Package (0x02)\n
+            {\n
+                0x18,\n 
+                0x03\n
+            })\n
+end;
